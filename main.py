@@ -170,7 +170,16 @@ def graph():
     plt.ylabel("Binding Energy per Nucleon in MeV")
     plt.xlabel("Atomic Mass")
     plt.grid(axis='both', color='grey')
-    ax.set_facecolor("black")
+    plt.axvline(x=60, color='black')
+    plt.annotate('Fusion', xy=(55, 6), xytext=(10, 6), arrowprops=dict(arrowstyle= '->',
+                         color='red',
+                         lw=3,
+                         ls='--'))
+    plt.annotate('Fission', xy=(65, 6), xytext=(110, 6), arrowprops=dict(arrowstyle= '->',
+                         color='red',
+                         lw=3,
+                         ls='--'))
+    ax.set_facecolor('white')
     plt.show()
 
 
