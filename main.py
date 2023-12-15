@@ -2,7 +2,7 @@ import tkinter as tk
 import csv
 import matplotlib.pyplot as plt
 
-file = open('elements.csv', 'r')
+file = open('elements_and_isotopes.csv', 'r')
 dat = csv.reader(file)
 data = []
 for i in dat:
