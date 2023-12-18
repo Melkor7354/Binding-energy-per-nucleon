@@ -3,15 +3,20 @@ import csv
 import matplotlib.pyplot as plt
 
 file = open('elements_and_isotopes.csv', 'r')
+file1 = open('all_elements.csv', 'r')
 dat = csv.reader(file)
+dat1 = csv.reader(file1)
 data = []
+data1 = []
 for i in dat:
     data.append(i)
+for i in dat1:
+    data1.append(i)
 primary = 'black'
 secondary = 'dark blue'
 text = 'white'
-font = ['Courier', 9]
-title = ['Courier', 13]
+font = ['Courier', 12]
+title = ['Courier', 16]
 mass_proton = 1.007277
 mass_neutron = 1.008665
 elements = []
@@ -27,8 +32,8 @@ class Interface(tk.Tk):
         tk.Tk.__init__(self)
         self._frame = None
         self.title("Binding Energy per Nucleon Calculator")
-        self.minsize(int(self.winfo_screenwidth()//2.5), int(self.winfo_screenheight()//2.5))
-        self.maxsize(int(self.winfo_screenwidth()//2.5), int(self.winfo_screenheight()//2.5))
+        self.minsize(int(self.winfo_screenwidth()//1.8), int(self.winfo_screenheight()//1.8))
+        self.maxsize(int(self.winfo_screenwidth()//1.8), int(self.winfo_screenheight()//1.8))
         self.switch_frame(Menu)
 
     def switch_frame(self, frame_class):
@@ -78,7 +83,7 @@ class Calculator(tk.Frame):
             a = int(atomic_mass)
 
             isotope_found = 0
-            for i in data:
+            for i in data1:
                 if (i[0] == atomic_number) and (i[3] == atomic_mass):
                     isotope_found = 1
                     m = (z * mass_proton) + ((a-z) * mass_neutron) - float(i[4])
@@ -163,6 +168,7 @@ def graph():
             y.append(average_be)
         else:
             pass
+
     plt.plot(x, y, '-r')
     plt.title(r'Variation of Binding Energy per Nucleon with Atomic Mass')
     plt.axhline(linewidth=2, color='grey')
@@ -171,14 +177,14 @@ def graph():
     plt.xlabel("Atomic Mass")
     plt.grid(axis='both', color='grey')
     plt.axvline(x=60, color='black')
-    plt.annotate('Fusion', xy=(55, 6), xytext=(10, 6), arrowprops=dict(arrowstyle= '->',
-                         color='red',
-                         lw=3,
-                         ls='--'))
-    plt.annotate('Fission', xy=(65, 6), xytext=(110, 6), arrowprops=dict(arrowstyle= '->',
-                         color='red',
-                         lw=3,
-                         ls='--'))
+    plt.annotate('Fusion', xy=(55, 6), xytext=(10, 6), arrowprops=dict(arrowstyle='->',
+                                                                       color='red',
+                                                                       lw=3,
+                                                                       ls='--'))
+    plt.annotate('Fission', xy=(65, 6), xytext=(110, 6), arrowprops=dict(arrowstyle='->',
+                                                                         color='red',
+                                                                         lw=3,
+                                                                         ls='--'))
     ax.set_facecolor('white')
     plt.show()
 

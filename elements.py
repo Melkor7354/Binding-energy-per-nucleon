@@ -46,4 +46,4 @@ data = {
 df = pd.DataFrame(data)
 
 # Writing DataFrame to CSV
-df.to_csv('elements_and_isotopes.csv', index=False)
+df.to_csv('all_elements.csv', index=False)
