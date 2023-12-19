@@ -26,6 +26,8 @@ def get_mass_number(isotope):
     return b
 
 # Looping through all elements
+
+
 for element in elements:
     for isotope in element:
         atomic_numbers.append(element.number)
